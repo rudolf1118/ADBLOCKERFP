@@ -1,4 +1,4 @@
-debugger;
+
 let sponsoredTexts=[
     "Sponsored",
     "مُموَّل", // Arabic
@@ -36,29 +36,26 @@ let list=[...sponsores, ...blockList];
 let posts=document.querySelector('[role="feed"]');
 
 let blocker=()=>{
-    if (posts) {
-        document.querySelectorAll('[role="feed"] [data-pagelet]').forEach(element=>{
-            for (let i=0; i < list.length; i++) {
-                if (element.querySelector(list[i])) {
-                    element.style.display="none"
-                }
-            }
-        })
-    }
-};
+    document.querySelectorAll('[role="feed"] [data-pagelet]').forEach(element => {
+        for(let i = 0;i<list.length;i++) {
+        let spelement = element.querySelector(`[aria-label="${list[i]}"]`)
+        if (spelement !== null) element.style.display = 'none'
+    }}) };
 
 let RemoveFromFeed=() =>{
-    if (posts) {
-        postsObserve=new MutationObserver(
-            mutations=>mutations && blocker()
-        );
+    let d = document,
+        postFeed = d.querySelector('[role="feed"]'),
+        postFeedObserver = new MutationObserver(
+            mutations => mutations && blocker()
+        )
 
-        posts && postObserve.observe(posts, {
-            childList: true
-        })
-    }
-};
+    postFeed &&
+    postFeedObserver.observe(postFeed, {
+        childList: true
+    })
+    };
 
 setInterval(function () {
     blocker();
-}, 100);
+    RemoveFromFeed();
+}, 1000000);
