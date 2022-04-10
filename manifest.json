@@ -1,0 +1,22 @@
+{
+  "name": "Fair Promote",
+  "description": "Ad blocker",
+  "version": "1.0.1.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.facebook.com/*"
+      ],
+      "js": [
+        "script.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "declarativeNetRequestWithHostAccess",
+    "webNavigation",
+    "tabs",
+    "activeTab"
+  ]
+}
