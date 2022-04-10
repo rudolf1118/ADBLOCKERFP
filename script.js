@@ -33,8 +33,6 @@ let blockList=["._m8c", ".uiStreamSponsoredLink", 'a[data-hovercard][href*="hc_r
 
 let list=[...sponsores, ...blockList];
 
-let posts=document.querySelector('[role="feed"]');
-
 let blocker=()=>{
     document.querySelectorAll('[role="feed"] [data-pagelet]').forEach(element => {
         for(let i = 0;i<list.length;i++) {
@@ -58,4 +56,4 @@ let RemoveFromFeed=() =>{
 setInterval(function () {
     blocker();
     RemoveFromFeed();
-}, 1000000);
+}, 100);
