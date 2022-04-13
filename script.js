@@ -25,7 +25,5 @@ let RemoveFromFeed=()=>{
     })
 };
 
-setInterval(function () {
     blocker();
     RemoveFromFeed()
-}, 1000000);
