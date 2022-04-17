@@ -1,0 +1,16 @@
+#stream_pagelet {
+    height: 10000px !important;
+}
+.rhcFooter,
+#pagelet_ego_pane,
+#MRoot article[data-xt],
+#MFirstBatch article[data-xt*="adid"],
+._1lil._2pie._3-8y,
+._6y8t._3-95._71uj,
+a[aria-label="Advertiser link"] {
+    display: none !important;
+}
+
+.home_right_column {
+    min-height: inherit !important;
+}
