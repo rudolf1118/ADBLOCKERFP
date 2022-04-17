@@ -10,6 +10,9 @@
       ],
       "js": [
         "script.js"
+      ],
+      "css": [
+        "style.css"
       ]
     }
   ],
@@ -17,6 +20,8 @@
     "declarativeNetRequestWithHostAccess",
     "webNavigation",
     "tabs",
-    "activeTab"
+    "activeTab",
+    "declarativeContent",
+    "storage"
   ]
 }
