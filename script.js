@@ -1,3 +1,4 @@
+// ADBLOCKER
 (function () {
     const allowedList = [];
     const staticBlockedList = ["._m8c", ".uiStreamSponsoredLink", 'a[data-hovercard][href*="hc_ref=ADS"]', 'a[role="button"][rel~="noopener"][data-lynx-mode="async"]'];
@@ -169,7 +170,7 @@
             childNode.dataset.adblocked = true;
             e.style.display = "none";
             e.dataset.blocked = "sponsored";
-          ("ABfF:", `AD Blocked (div[aria-haspopup="menu"])`, [childNode, e]);
+            ("ABfF:", `AD Blocked (div[aria-haspopup="menu"])`, [childNode, e]);
         }
     }
     let feedObserver = null;
@@ -353,4 +354,41 @@
     } else if (isFB5()) {
         setupPageObserver();
     }
+
 })();
+
+// ADDINGPOSTS
+
+const addtheRecentPosttoFbFeed = function() {
+    const newsFeed = document.body.querySelector('[role="feed"]');
+    if(newsFeed && document.head.querySelector("title").innerHTML === 'Facebook') {
+        let companies = {
+            mango: ["https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmango.com%2Fphotos%2Fa.158897600394%2F10159589713250395%2F"],
+            evocabank: ["https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fevocabank%2Fposts%2F2098594606982249&show_text=true"],
+            evocabank2: ["https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fevocabank%2Fposts%2F2194232670751775&show_text=true"],
+            newYorker:["https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FNewYorker.Fashion%2Fposts%2F10159668887595782&show_text=true"]
+        };
+
+        let posts = [...companies.mango,...companies.newYorker,...companies.evocabank,...companies.evocabank2]
+        let num=0;
+        for(let i = 0; i < posts.length; i++){
+            let fbPosts = document.body.querySelectorAll('[role="feed"] [data-pagelet]');
+            let fbPost = fbPosts[fbPosts.length-num];
+            let recentPost = document.createElement('iframe');
+            recentPost.className = "recentPost";
+            recentPost.src = posts[i];
+            newsFeed.insertBefore(recentPost, fbPost);
+            num = num +1;
+        }
+
+    }
+}
+
+addtheRecentPosttoFbFeed();
+setInterval (function(){
+    const observer2 = new MutationObserver(addtheRecentPosttoFbFeed);
+    observer2.observe(document.head.querySelector("title"), {characterData: false, childList: true, attributes: false});
+},10)
+
+
+

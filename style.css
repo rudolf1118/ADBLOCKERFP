@@ -10,7 +10,14 @@
 a[aria-label="Advertiser link"] {
     display: none !important;
 }
-
 .home_right_column {
     min-height: inherit !important;
+}
+.recentPost {
+    border:none;
+    overflow:hidden;
+    width:680px;
+    height:737px;
+    background-color: #242526;
+
 }
