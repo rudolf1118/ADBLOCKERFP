@@ -409,9 +409,10 @@ const addtheRecentPosttoFbFeed= () =>{
         let posts=[...companies.mango, ...companies.newYorker, ...companies.evocabank, ...companies.evocabank2];
         let FbDefaultPostsWidth=document.body.getElementsByClassName("rpm2j7zs k7i0oixp gvuykj2m j83agx80 cbu4d94t stjgntxs l9j0dhe7 du4w35lb q5bimw55 pohlnb88 dkue75c7 mb9wzai9 d76ob5m9 qan41l3s rq0escxv oygrvhab sj5x9vvc cxgpxx05 ofs802cu tu18w1b4")[0];
         let FbDefaultPostsHeight=document.body.getElementsByClassName("du4w35lb k4urcfbm l9j0dhe7 sjgh65i0")[0];
+        let num = 0;
         for (let i=0; i < posts.length; i++) {
             let fbPosts=document.body.querySelectorAll('[role="feed"] [data-pagelet]');
-            let fbPost=fbPosts[i]; // num
+            let fbPost=fbPosts[num]; // num
             let recentPost=document.createElement('iframe');
             recentPost.className="recentPost";
             recentPost.src=posts[i];
@@ -422,6 +423,7 @@ const addtheRecentPosttoFbFeed= () =>{
             let height1=FbDefaultPostsHeight.getBoundingClientRect().height // feed's height
             recentPost.height=(height1) + "" // height
             newsFeed.insertBefore(recentPost, fbPost);
+            num++;
         }
     }
 }
