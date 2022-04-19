@@ -17,11 +17,20 @@
     }
   ],
   "permissions": [
-    "declarativeNetRequestWithHostAccess",
-    "webNavigation",
-    "tabs",
+    "scripting",
     "activeTab",
-    "declarativeContent",
-    "storage"
+    "tabs",
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "declarativeNetRequestFeedback",
+    "background",
+    "contextMenus",
+    "history",
+    "webNavigation",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "*://www.facebook.com/*"
   ]
 }

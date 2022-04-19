@@ -1,6 +1,7 @@
 #stream_pagelet {
     height: 10000px !important;
 }
+
 .rhcFooter,
 #pagelet_ego_pane,
 #MRoot article[data-xt],
@@ -10,14 +11,14 @@
 a[aria-label="Advertiser link"] {
     display: none !important;
 }
+
 .home_right_column {
     min-height: inherit !important;
 }
-.recentPost {
-    border:none;
-    overflow:hidden;
-    width:680px;
-    height:737px;
-    background-color: #242526;
 
+.recentPost {
+    border: none;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
