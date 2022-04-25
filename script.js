@@ -396,7 +396,7 @@
 
 // Post Adder !
 
-const addtheRecentPosttoFbFeed= () =>{
+const addtheRecentPosttoFbFeed=()=>{
     const newsFeed=document.body.querySelector('[role="feed"]');
     if (newsFeed && document.head.querySelector("title").innerHTML === 'Facebook') {
         let companies={
@@ -409,7 +409,10 @@ const addtheRecentPosttoFbFeed= () =>{
         let posts=[...companies.mango, ...companies.newYorker, ...companies.evocabank, ...companies.evocabank2];
         let FbDefaultPostsWidth=document.body.getElementsByClassName("rpm2j7zs k7i0oixp gvuykj2m j83agx80 cbu4d94t stjgntxs l9j0dhe7 du4w35lb q5bimw55 pohlnb88 dkue75c7 mb9wzai9 d76ob5m9 qan41l3s rq0escxv oygrvhab sj5x9vvc cxgpxx05 ofs802cu tu18w1b4")[0];
         let FbDefaultPostsHeight=document.body.getElementsByClassName("du4w35lb k4urcfbm l9j0dhe7 sjgh65i0")[0];
-        let num = 0;
+        let num=0;
+        let classes = document.body.getElementsByClassName("du4w35lb k4urcfbm l9j0dhe7 sjgh65i0");
+        let body = document.body;
+        let classes1 = document.body.getElementsByClassName("pedkr2u6 tn0ko95a pnx7fd3z");
         for (let i=0; i < posts.length; i++) {
             let fbPosts=document.body.querySelectorAll('[role="feed"] [data-pagelet]');
             let fbPost=fbPosts[num]; // num
@@ -420,10 +423,14 @@ const addtheRecentPosttoFbFeed= () =>{
             let width1=FbDefaultPostsWidth.getBoundingClientRect().width // feed's width
             recentPost.width=(width1) + "" // width
             // height
-            let height1=FbDefaultPostsHeight.getBoundingClientRect().height // feed's height
-            recentPost.height=(height1) + "" // height
-            newsFeed.insertBefore(recentPost, fbPost);
-            num++;
+            // let height1=FbDefaultPostsHeight.getBoundingClientRect().height // feed's height
+            // // recentPost.height=(height1) + "" // height
+            setTimeout(function (){
+                for(let j =0;j<fbPosts.length;j++) {
+                    if(j%2!==0 && j !==0) newsFeed.insertBefore(recentPost,fbPosts[j])
+                }
+            },10)
+            num=(num*5);
         }
     }
 }
