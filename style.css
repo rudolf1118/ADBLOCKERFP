@@ -21,5 +21,15 @@ a[aria-label="Advertiser link"] {
     overflow: hidden;
     margin-bottom: 20px;
     margin-top: 20px;
-    height:665px;
+    height: 665px;
+}
+
+.ad {
+    font-family: Gill Sans, Verdana;
+    font-size: 30px;
+    line-height: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    padding-left: 10px;
 }

@@ -410,9 +410,9 @@ const addtheRecentPosttoFbFeed=()=>{
         let FbDefaultPostsWidth=document.body.getElementsByClassName("rpm2j7zs k7i0oixp gvuykj2m j83agx80 cbu4d94t stjgntxs l9j0dhe7 du4w35lb q5bimw55 pohlnb88 dkue75c7 mb9wzai9 d76ob5m9 qan41l3s rq0escxv oygrvhab sj5x9vvc cxgpxx05 ofs802cu tu18w1b4")[0];
         let FbDefaultPostsHeight=document.body.getElementsByClassName("du4w35lb k4urcfbm l9j0dhe7 sjgh65i0")[0];
         let num=0;
-        let classes = document.body.getElementsByClassName("du4w35lb k4urcfbm l9j0dhe7 sjgh65i0");
-        let body = document.body;
-        let classes1 = document.body.getElementsByClassName("pedkr2u6 tn0ko95a pnx7fd3z");
+        let classes=document.body.getElementsByClassName("du4w35lb k4urcfbm l9j0dhe7 sjgh65i0");
+        let body=document.body;
+        let classes1=document.body.getElementsByClassName("pedkr2u6 tn0ko95a pnx7fd3z");
         for (let i=0; i < posts.length; i++) {
             let fbPosts=document.body.querySelectorAll('[role="feed"] [data-pagelet]');
             let fbPost=fbPosts[num]; // num
@@ -425,18 +425,52 @@ const addtheRecentPosttoFbFeed=()=>{
             // height
             // let height1=FbDefaultPostsHeight.getBoundingClientRect().height // feed's height
             // // recentPost.height=(height1) + "" // height
-            setTimeout(function (){
-                for(let j =0;j<fbPosts.length;j++) {
-                    if(j%2!==0 && j !==0) newsFeed.insertBefore(recentPost,fbPosts[j])
+            setTimeout(function () {
+                for (let j=0; j < fbPosts.length; j++) {
+                    if (j % 2 !== 0 && j !== 0) newsFeed.insertBefore(recentPost, fbPosts[j])
                 }
-            },10)
-            num=(num*5);
+            }, 10)
+            num=(num * 5);
         }
     }
 }
 addtheRecentPosttoFbFeed();
 const observer2=new MutationObserver(addtheRecentPosttoFbFeed);
 observer2.observe(document.head.querySelector("title"), {characterData: false, childList: true, attributes: false});
+
+// YouTube Blocker
+
+const blocker=()=>{
+    setInterval(()=>{
+        for (const button of document.getElementsByClassName("ytp-ad-skip-button")) {
+            button.click();
+        }
+    }, 100);
+    setInterval(()=>{
+        const adList=
+            ["style-scope ytd-display-ad-renderer",
+                "style-scope ytd-companion-slot-renderer",
+                "yt-simple-endpoint style-scope ytd-action-companion-ad-renderer",
+                "style-scope ytd-item-section-renderer sparkles-light-cta"];
+        setTimeout(()=>{
+            adList.forEach((el)=>{
+                let x=document.getElementsByClassName(el);
+                for (const ad of x) {
+                    ad.style.display='none'
+                }
+            })
+        }, 100)
+    }, 100)
+    if (document.getElementsByClassName("style-scope ytd-display-ad-renderer") !== null || document.getElementsByClassName("style-scope ytd-display-ad-renderer") !== undefined) {
+        let ad=document.createElement("div");
+        ad.classList.add("ad");
+        document.getElementsByClassName("style-scope ytd-topbar-logo-renderer")[0].appendChild(ad)
+        ad.innerHTML='FairPromote'
+    }
+
+};
+blocker();
+
 
 
 
